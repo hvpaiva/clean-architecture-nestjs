@@ -1,0 +1,22 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "usemobile",
+  "database": "typeorm-test",
+  
+  "entities": ["dist/infrastructure/mapper/*{.ts,.js}"],
+
+  "synchronize": false,
+
+  "logging": true,
+  "logger": "file",
+  
+  "migrationsRun": true,
+  "migrationsTableName": "migrations",
+  "migrations": ["dist/infrastructure/migrations/*{.ts,.js}"],
+  "cli": {
+    "migrationsDir": "src/infrastructure/migrations"
+  }
+}
