@@ -6,19 +6,19 @@ import { User } from 'domain/models/User';
 export class UserVM {
   @Expose()
   @ApiProperty({
-    description: 'The id of the user'
+    description: 'The id of the user',
   })
   id: number;
 
   @Expose()
   @ApiProperty({
-    description: 'The name of the user'
+    description: 'The name of the user',
   })
   name: string;
 
   @Expose()
   @ApiProperty({
-    description: 'The unique email of the user'
+    description: 'The unique email of the user',
   })
   email: string;
 

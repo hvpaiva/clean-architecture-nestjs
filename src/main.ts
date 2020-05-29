@@ -19,12 +19,15 @@ declare const module: any;
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule, {
-      cors: true
+      cors: true,
     });
     const configService = app.get(ConfigService);
-    Logger.log(`Environment: ${chalk
-      .hex('#87e8de')
-      .bold(`${process.env.NODE_ENV?.toUpperCase()}`)}`, 'Bootstrap')
+    Logger.log(
+      `Environment: ${chalk
+        .hex('#87e8de')
+        .bold(`${process.env.NODE_ENV?.toUpperCase()}`)}`,
+      'Bootstrap',
+    );
 
     app.use(helmet());
     app.use(compression());
@@ -68,7 +71,7 @@ async function bootstrap() {
 
     const HOST = configService.get('HOST', 'localhost');
     const PORT = configService.get('PORT', '3000');
-      
+
     await app.listen(PORT);
     process.env.NODE_ENV !== 'production'
       ? Logger.log(
@@ -95,7 +98,7 @@ async function bootstrap() {
     process.exit();
   }
 }
-bootstrap().catch((e) => {
+bootstrap().catch(e => {
   Logger.error(`❌  Error starting server, ${e}`, '', 'Bootstrap', false);
   throw e;
 });

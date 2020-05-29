@@ -15,7 +15,7 @@ export class HealthController {
     private health: HealthCheckService,
     private dns: DNSHealthIndicator,
     private db: TypeOrmHealthIndicator,
-    private configService: ConfigService
+    private configService: ConfigService,
   ) {}
 
   @Get()

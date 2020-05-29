@@ -7,24 +7,24 @@ const database = process.env.DB_DATABASE;
 const environment = process.env.NODE_ENV;
 
 module.exports = {
-  "type": connection,
-  "host": host,
-  "port": port,
-  "username": username,
-  "password": password,
-  "database": database,
+  type: connection,
+  host: host,
+  port: port,
+  username: username,
+  password: password,
+  database: database,
 
-  "entities": ["dist/infrastructure/database/mapper/*{.ts,.js}"],
+  entities: ['dist/infrastructure/database/mapper/*{.ts,.js}'],
 
-  "synchronize": false,
+  synchronize: false,
 
-  "logging": true,
-  "logger": "file",
-  
-  "migrationsRun": environment !== 'production',
-  "migrationsTableName": "migrations",
-  "migrations": ["dist/infrastructure/database/migrations/*{.ts,.js}"],
-  "cli": {
-    "migrationsDir": "src/infrastructure/database/migrations"
-  }
-}
+  logging: true,
+  logger: 'file',
+
+  migrationsRun: environment !== 'production',
+  migrationsTableName: 'migrations',
+  migrations: ['dist/infrastructure/database/migrations/*{.ts,.js}'],
+  cli: {
+    migrationsDir: 'src/infrastructure/database/migrations',
+  },
+};

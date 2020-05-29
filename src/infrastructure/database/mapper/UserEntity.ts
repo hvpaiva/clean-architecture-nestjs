@@ -1,42 +1,37 @@
-import { EntitySchema } from "typeorm";
+import { EntitySchema } from 'typeorm';
 
 import { User } from 'domain/models/User';
 
-import { BaseEntity } from "./BaseEntity";
+import { BaseEntity } from './BaseEntity';
 
 export const UserEntity = new EntitySchema<User>({
-  name: "users",
+  name: 'users',
   columns: {
     ...BaseEntity,
     name: {
-      type: String
+      type: String,
     },
     email: {
-      type: String
-    }
+      type: String,
+    },
   },
   relations: {
     posts: {
-      type: "one-to-many",
-      target: "posts"
-    }
+      type: 'one-to-many',
+      target: 'posts',
+    },
   },
   indices: [
     {
-      name: "IDX_USERS",
+      name: 'IDX_USERS',
       unique: true,
-      columns: [
-        "name",
-        "email"
-      ]
-    }
+      columns: ['name', 'email'],
+    },
   ],
   uniques: [
     {
-      name: "UNIQUE_USERS",
-      columns: [
-        "email"
-      ]
-    }
-  ]
+      name: 'UNIQUE_USERS',
+      columns: ['email'],
+    },
+  ],
 });

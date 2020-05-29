@@ -6,11 +6,11 @@ import { UsersRepository } from 'infrastructure/database/repositories/UsersRepos
 import { UsersController } from 'presentation/controllers/UsersController';
 
 @Module({
-    imports: [],
-    controllers: [UsersController],
-    providers: [
-        UsersUseCases,
-        { provide: IUsersRepository, useClass: UsersRepository}
-    ],
+  imports: [],
+  controllers: [UsersController],
+  providers: [
+    UsersUseCases,
+    { provide: IUsersRepository, useClass: UsersRepository },
+  ],
 })
 export class UsersModule {}

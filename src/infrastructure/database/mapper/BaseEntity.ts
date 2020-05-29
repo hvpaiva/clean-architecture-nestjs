@@ -1,4 +1,4 @@
-import { EntitySchemaColumnOptions } from "typeorm";
+import { EntitySchemaColumnOptions } from 'typeorm';
 
 export const BaseEntity = {
   id: {

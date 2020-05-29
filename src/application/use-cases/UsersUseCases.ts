@@ -22,7 +22,20 @@ export class UsersUseCases {
   }
 
   async save(user: User): Promise<User> {
-    return await this.usersRepository.save(user);
+    this.usersRepository.transaction<User>(async () => {
+      const savedUser = await this.usersRepository.save(user);
+
+      await this.usersRepository.save(
+        new User({
+          name: 'John Doe',
+          email: 'john.doe@gmail.com',
+        }),
+      );
+
+      throw new Error('Proposital error to force rollback');
+      return savedUser;
+    });
+    throw new Error(`Cannot save User ${user.name}`);
   }
 
   async update(user: User): Promise<boolean> {

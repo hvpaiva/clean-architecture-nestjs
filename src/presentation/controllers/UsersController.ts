@@ -1,4 +1,4 @@
-import { Controller, Param, Get, Post, Body } from "@nestjs/common";
+import { Controller, Param, Get, Post, Body } from '@nestjs/common';
 import { ApiTags, ApiParam, ApiOperation } from '@nestjs/swagger';
 
 import { UsersUseCases } from 'application/use-cases/UsersUseCases';
@@ -19,9 +19,7 @@ export class UsersController {
     type: Number,
     description: 'The user id',
   })
-  async get(
-    @Param('id') id: number
-  ): Promise<UserVM> {
+  async get(@Param('id') id: number): Promise<UserVM> {
     const user = await this.usersUseCases.getById(id);
 
     return UserVM.toViewModel(user);
@@ -42,7 +40,9 @@ export class UsersController {
     summary: 'Creates an user',
   })
   async post(@Body() createUser: CreateUserVM): Promise<UserVM> {
-    const newUser = await this.usersUseCases.save(CreateUserVM.fromViewModel(createUser));
+    const newUser = await this.usersUseCases.save(
+      CreateUserVM.fromViewModel(createUser),
+    );
 
     return UserVM.toViewModel(newUser);
   }

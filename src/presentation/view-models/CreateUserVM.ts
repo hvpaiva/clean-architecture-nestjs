@@ -7,7 +7,7 @@ export class CreateUserVM {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    description: 'The name of the user'
+    description: 'The name of the user',
   })
   name: string;
 
@@ -15,7 +15,7 @@ export class CreateUserVM {
   @IsNotEmpty()
   @IsEmail()
   @ApiProperty({
-    description: 'The unique email of the user'
+    description: 'The unique email of the user',
   })
   email: string;
 
