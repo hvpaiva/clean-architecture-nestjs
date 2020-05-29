@@ -1,7 +1,7 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { plainToClass, Expose } from 'class-transformer';
 
-import { User } from 'domain/User';
-import { ApiProperty } from '@nestjs/swagger';
+import { User } from 'domain/models/User';
 
 export class UserVM {
   @Expose()

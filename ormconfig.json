@@ -6,7 +6,7 @@
   "password": "usemobile",
   "database": "typeorm-test",
   
-  "entities": ["dist/infrastructure/mapper/*{.ts,.js}"],
+  "entities": ["dist/infrastructure/database/mapper/*{.ts,.js}"],
 
   "synchronize": false,
 
@@ -15,8 +15,8 @@
   
   "migrationsRun": true,
   "migrationsTableName": "migrations",
-  "migrations": ["dist/infrastructure/migrations/*{.ts,.js}"],
+  "migrations": ["dist/infrastructure/database/migrations/*{.ts,.js}"],
   "cli": {
-    "migrationsDir": "src/infrastructure/migrations"
+    "migrationsDir": "src/infrastructure/database/migrations"
   }
 }

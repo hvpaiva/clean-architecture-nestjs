@@ -1,6 +1,8 @@
-import { UsersModule } from './users.module';
+
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { UsersModule } from 'infrastructure/ioc/users.module';
 
 @Module({
   imports: [

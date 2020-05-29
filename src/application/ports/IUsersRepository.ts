@@ -1,7 +1,8 @@
-import { User } from 'domain/User';
+import { Injectable } from '@nestjs/common';
+
+import { User } from 'domain/models/User';
 
 import { ICrudRepository } from './ICrudRepository';
-import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export abstract class IUsersRepository extends ICrudRepository<User> {}

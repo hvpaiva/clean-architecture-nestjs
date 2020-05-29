@@ -1,6 +1,7 @@
 import { EntitySchema } from "typeorm";
 
-import { Post } from 'domain/Post';
+import { Post } from 'domain/models/Post';
+
 import { BaseEntity } from "./BaseEntity";
 
 export const PostEntity = new EntitySchema<Post>({

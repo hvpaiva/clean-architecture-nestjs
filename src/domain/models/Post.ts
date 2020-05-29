@@ -1,4 +1,5 @@
-import { User } from 'domain/User';
+import { User } from 'domain/models/User';
+
 export class Post {
   id: number;
   title: string;

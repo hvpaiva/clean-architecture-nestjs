@@ -1,5 +1,6 @@
 import { plainToClass, Expose } from 'class-transformer';
 import { DeepPartial } from 'typeorm';
+
 import { Post } from './Post';
 
 export class User {

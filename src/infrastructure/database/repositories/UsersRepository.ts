@@ -1,8 +1,9 @@
-import { IUsersRepository } from 'application/repositories/IUsersRepository';
 import { EntityRepository, EntityManager } from 'typeorm';
 
-import { User } from 'domain/User';
-import { UserEntity } from 'infrastructure/mapper/UserEntity';
+import { IUsersRepository } from 'application/ports/IUsersRepository';
+import { User } from 'domain/models/User';
+import { UserEntity } from 'infrastructure/database/mapper/UserEntity';
+
 import { BaseRepository } from './BaseRepository';
 
 @EntityRepository(UserEntity)

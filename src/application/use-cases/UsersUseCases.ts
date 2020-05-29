@@ -1,11 +1,11 @@
-import { IUsersRepository } from 'application/repositories/IUsersRepository';
 import { Injectable, Logger } from '@nestjs/common';
 
-import { User } from 'domain/User';
+import { IUsersRepository } from 'application/ports/IUsersRepository';
+import { User } from 'domain/models/User';
 
 @Injectable()
-export class UsersService {
-  private readonly logger = new Logger(UsersService.name);
+export class UsersUseCases {
+  private readonly logger = new Logger(UsersUseCases.name);
 
   constructor(private readonly usersRepository: IUsersRepository) {}
 

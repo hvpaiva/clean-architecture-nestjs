@@ -29,6 +29,8 @@
     "@nestjs/typeorm": "^7.0.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
+    "date-fns": "^2.14.0",
+    "lodash": "^4.17.15",
     "pg": "^8.2.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
@@ -42,13 +44,15 @@
     "@nestjs/testing": "^7.0.0",
     "@types/express": "^4.17.3",
     "@types/jest": "25.1.4",
+    "@types/lodash": "^4.14.152",
     "@types/node": "^13.9.1",
     "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import-helpers": "^1.0.2",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
@@ -70,6 +74,12 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@domain(.*)$": "<rootDir>/domain$1",
+      "^@application(.*)$": "<rootDir>/application$1",
+      "^@infrastructure(.*)$": "<rootDir>/infrastructure$1",
+      "^@presentation(.*)$": "<rootDir>/presentation$1"
+    }
   }
 }

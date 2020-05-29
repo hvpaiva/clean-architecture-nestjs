@@ -1,13 +1,14 @@
-import { CreateUserVM } from './../view-models/CreateUserVM';
-import { UsersService } from './../../application/services/UsersService';
 import { Controller, Param, Get, Post, Body } from "@nestjs/common";
-import { UserVM } from 'presentation/view-models/UserVM';
 import { ApiTags, ApiParam, ApiOperation } from '@nestjs/swagger';
+
+import { UsersUseCases } from 'application/use-cases/UsersUseCases';
+import { CreateUserVM } from 'presentation/view-models/CreateUserVM';
+import { UserVM } from 'presentation/view-models/UserVM';
 
 @ApiTags('Users')
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersUseCases: UsersUseCases) {}
 
   @Get(':id')
   @ApiOperation({
@@ -21,7 +22,7 @@ export class UsersController {
   async get(
     @Param('id') id: number
   ): Promise<UserVM> {
-    const user = await this.usersService.getById(id);
+    const user = await this.usersUseCases.getById(id);
 
     return UserVM.toViewModel(user);
   }
@@ -31,7 +32,7 @@ export class UsersController {
     summary: 'Find all users',
   })
   async getAll(): Promise<UserVM[]> {
-    const users = await this.usersService.get();
+    const users = await this.usersUseCases.get();
 
     return users.map(user => UserVM.toViewModel(user));
   }
@@ -41,7 +42,7 @@ export class UsersController {
     summary: 'Creates an user',
   })
   async post(@Body() createUser: CreateUserVM): Promise<UserVM> {
-    const newUser = await this.usersService.save(CreateUserVM.fromViewModel(createUser));
+    const newUser = await this.usersUseCases.save(CreateUserVM.fromViewModel(createUser));
 
     return UserVM.toViewModel(newUser);
   }
