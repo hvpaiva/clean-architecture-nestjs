@@ -1,0 +1,17 @@
+{
+  "moduleDirectories": ["node_modules", "src"],
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "testEnvironment": "node",
+  "testRegex": ".spec.ts$",
+  "transform": {
+    "^.+\\.ts$": "ts-jest"
+  },
+  "coverageDirectory": "./coverage",
+  "collectCoverage": true,
+  "moduleNameMapper": {
+    "^@application(.*)$": "<rootDir>/src/application$1",
+    "^@presentation(.*)$": "<rootDir>/src/presentation$1",
+    "^@infrastructure(.*)$": "<rootDir>/src/infrastructure$1",
+    "^@domain(.*)$": "<rootDir>/src/domain$1"
+  }
+}

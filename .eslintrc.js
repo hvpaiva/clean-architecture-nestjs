@@ -22,7 +22,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    '@typescript-eslint/prefer-namespace-keyword': 'off',
     'import-helpers/order-imports': [
       'warn',
       {
@@ -30,8 +29,8 @@ module.exports = {
         groups: [
           'module',
           [
-            '/^presentation/',
             '/^application/',
+            '/^presentation/',
             '/^domain/',
             '/^infrastructure/',
           ],
