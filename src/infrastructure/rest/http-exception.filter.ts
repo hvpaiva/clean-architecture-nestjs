@@ -3,6 +3,7 @@ import {
   Catch,
   ExceptionFilter,
   HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 
 /**
@@ -17,9 +18,20 @@ export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
     const request = ctx.getRequest();
     const statusCode = exception.getStatus();
 
+    if (statusCode !== HttpStatus.UNPROCESSABLE_ENTITY)
+      response.status(statusCode).json({
+        statusCode,
+        message: exception.message,
+        timestamp: new Date().toISOString(),
+        path: request.url,
+      });
+
+    const exceptionResponse: any = exception.getResponse();
+    console.log(exceptionResponse);
+
     response.status(statusCode).json({
       statusCode,
-      message: exception.message,
+      error: exceptionResponse.message,
       timestamp: new Date().toISOString(),
       path: request.url,
     });

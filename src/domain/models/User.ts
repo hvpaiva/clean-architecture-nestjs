@@ -18,7 +18,7 @@ export class User {
   }
 
   findPost(postId: number): Post {
-    return this.posts.find(p => p.id === postId);
+    return this.posts?.find(p => p.id === postId);
   }
 
   createPost(post: Post): void {

@@ -3,9 +3,19 @@ import {
   PipeTransform,
   ArgumentMetadata,
   UnprocessableEntityException,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
-import { validate } from 'class-validator';
+import { validate, ValidationError } from 'class-validator';
+
+interface IValidationError {
+  property: string;
+  errors: string[];
+  constraints: {
+    [type: string]: string;
+  };
+}
 
 /**
  * Validation Pipe.
@@ -14,16 +24,13 @@ import { validate } from 'class-validator';
 @Injectable()
 export class ValidationPipe implements PipeTransform<any> {
   async transform(value: any, { metatype }: ArgumentMetadata) {
-    // destructuring metadata
     if (!metatype || !this.toValidate(metatype)) {
       return value;
     }
     const object = plainToClass(metatype, value);
     const errors = await validate(object);
     if (errors.length > 0) {
-      throw new UnprocessableEntityException(
-        `Erros de validação: ${this.formatErrors(errors)}`,
-      );
+      throw new UnprocessableEntityException(this.formatErrors(errors));
     }
     return value;
   }
@@ -33,14 +40,13 @@ export class ValidationPipe implements PipeTransform<any> {
     return !types.includes(metatype);
   }
 
-  private formatErrors(errors: any[]) {
-    return errors
-      .map(err => {
-        // tslint:disable-next-line: forin
-        for (const property in err.constraints) {
-          return err.constraints[property];
-        }
-      })
-      .join('\n');
+  private formatErrors(errors: ValidationError[]): IValidationError[] {
+    return errors.map(err => {
+      return {
+        property: err.property,
+        errors: Object.keys(err.constraints),
+        constraints: err.constraints,
+      };
+    });
   }
 }

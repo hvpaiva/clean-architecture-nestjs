@@ -1,4 +1,4 @@
-import { plainToClass, Expose } from 'class-transformer';
+import { Expose } from 'class-transformer';
 
 import { User } from 'domain/models/User';
 
@@ -15,10 +15,8 @@ export class Post {
   @Expose()
   user: User;
 
-  constructor(post: Post) {
-    Object.assign(
-      this,
-      plainToClass(Post, post, { excludeExtraneousValues: true }),
-    );
+  constructor(title: string, text: string) {
+    this.title = title;
+    this.text = text;
   }
 }

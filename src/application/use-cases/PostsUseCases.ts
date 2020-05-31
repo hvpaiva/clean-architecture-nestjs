@@ -10,45 +10,45 @@ import { User } from 'domain/models/User';
 export class PostsUseCases {
   private readonly logger = new Logger(PostsUseCases.name);
 
-  constructor(
-    private readonly usersRepository: IUsersRepository,
-    private readonly postsRepository: IPostsRepository,
-  ) {}
+  constructor(private readonly usersRepository: IUsersRepository) {}
 
   async getAllPostsByUser(userId: number): Promise<Post[]> {
     this.logger.log('Fetch all user`s posts');
 
-    const user = await this.usersRepository.findOne(userId);
-    console.log(user);
+    const user = await this.usersRepository.findOne(userId, {
+      relations: ['posts'],
+    });
+
+    if (!user)
+      throw new NotFoundException(`The user {${userId}} wasn't found.`);
 
     return user.posts;
   }
 
   async getPostByUser(userId: number, postId: number): Promise<Post> {
     const user = await this.usersRepository.findOne(userId, {
-      loadEagerRelations: true,
+      relations: ['posts'],
     });
 
-    return user.findPost(postId);
+    if (!user)
+      throw new NotFoundException(`The user {${userId}} wasn't found.`);
+
+    const post = user.findPost(postId);
+
+    if (!post)
+      throw new NotFoundException(`The post {${postId}} wasn't found.`);
+
+    return post;
   }
 
   async createPost(userId: number, post: Post): Promise<Post> {
     const user = await this.usersRepository.findOne(userId);
 
-    if (user === null)
-      throw new NotFoundException(`User ${userId} wasn't found`);
+    if (!user) throw new NotFoundException(`User ${userId} wasn't found.`);
 
     user.createPost(post);
-    console.log(user);
-    const mockUser = new User(
-      'Gabriela Paiva 2',
-      'gabi.paiva@gmail.com',
-      [{ title: 'Post Um', text: 'Texto qualquer' } as Post],
-      1,
-    );
 
-    const savedUser = await this.usersRepository.save(mockUser);
-    console.log(savedUser);
+    const savedUser = await this.usersRepository.save(user);
 
     return savedUser.posts.find(p => p.title === post.title);
   }
