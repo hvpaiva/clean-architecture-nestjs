@@ -42,7 +42,9 @@ export class PostsUseCases {
   }
 
   async createPost(userId: number, post: Post): Promise<Post> {
-    const user = await this.usersRepository.findOne(userId);
+    const user = await this.usersRepository.findOne(userId, {
+      relations: ['posts'],
+    });
 
     if (!user) throw new NotFoundException(`User ${userId} wasn't found.`);
 
