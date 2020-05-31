@@ -10,6 +10,10 @@ export class User {
 
   posts?: Post[];
 
+  createdAt?: Date;
+
+  updatedAt?: Date;
+
   constructor(name: string, email: string, posts?: Post[], id?: number) {
     this.name = name;
     this.email = email;
@@ -18,7 +22,11 @@ export class User {
   }
 
   findPost(postId: number): Post {
-    return this.posts?.find(p => p.id === postId);
+    return this.posts?.find(p => p.id === postId) ?? null;
+  }
+
+  findPosts(): Post[] {
+    return this.posts ?? [];
   }
 
   createPost(post: Post): void {

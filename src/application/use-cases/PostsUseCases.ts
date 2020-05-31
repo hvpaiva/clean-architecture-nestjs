@@ -1,10 +1,7 @@
 import { Post } from 'domain/models/Post';
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
 
-import { IPostsRepository } from 'application/ports/IPostsRepository';
 import { IUsersRepository } from 'application/ports/IUsersRepository';
-import { User } from 'domain/models/User';
 
 @Injectable()
 export class PostsUseCases {
@@ -22,7 +19,7 @@ export class PostsUseCases {
     if (!user)
       throw new NotFoundException(`The user {${userId}} wasn't found.`);
 
-    return user.posts;
+    return user.findPosts();
   }
 
   async getPostByUser(userId: number, postId: number): Promise<Post> {
@@ -46,7 +43,8 @@ export class PostsUseCases {
       relations: ['posts'],
     });
 
-    if (!user) throw new NotFoundException(`User ${userId} wasn't found.`);
+    if (!user)
+      throw new NotFoundException(`The user {${userId}} wasn't found.`);
 
     user.createPost(post);
 
