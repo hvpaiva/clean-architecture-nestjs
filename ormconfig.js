@@ -14,16 +14,16 @@ module.exports = {
   password: password,
   database: database,
 
-  entities: ['dist/infrastructure/database/mapper/*{.ts,.js}'],
+  entities: ['dist/infrastructure/database/mapper/*.js'],
 
   synchronize: false,
 
   logging: true,
   logger: 'file',
 
-  migrationsRun: environment !== 'production',
+  migrationsRun: false, // I prefer to run manually
   migrationsTableName: 'migrations',
-  migrations: ['dist/infrastructure/database/migrations/*{.ts,.js}'],
+  migrations: ['dist/infrastructure/database/migrations/*.js'],
   cli: {
     migrationsDir: 'src/infrastructure/database/migrations',
   },

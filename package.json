@@ -7,10 +7,11 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
+    "prestart": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "cross-env NODE_ENV=development nest start --watch",
+    "start:dev": "cross-env NODE_ENV=development yarn start --watch",
     "start:dev:hrm": "cross-env NODE_ENV=development nest build --webpack --webpackPath webpack-hmr.config.js",
     "start:stage": "cross-env NODE_ENV=stage nest start --watch",
     "start:debug": "cross-env NODE_ENV=development nest start --debug --watch",

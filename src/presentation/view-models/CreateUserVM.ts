@@ -20,6 +20,6 @@ export class CreateUserVM {
   email: string;
 
   static fromViewModel(vm: CreateUserVM): User {
-    return new User(vm);
+    return new User(vm.name, vm.email);
   }
 }

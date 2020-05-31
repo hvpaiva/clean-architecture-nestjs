@@ -12,30 +12,31 @@ export class UsersUseCases {
   async get(): Promise<User[]> {
     this.logger.log('Fetch all users');
 
-    return await this.usersRepository.find({});
+    return await this.usersRepository.find({ loadEagerRelations: true });
   }
 
   async getById(id: number): Promise<User> {
     this.logger.log('Fetch all users');
 
-    return await this.usersRepository.findOne(id);
+    const user = await this.usersRepository.findOne(id);
+    console.log(user);
+
+    return user;
   }
 
   async save(user: User): Promise<User> {
-    this.usersRepository.transaction<User>(async () => {
-      const savedUser = await this.usersRepository.save(user);
+    // this.usersRepository.transaction<User>(async () => {
+    //   const savedUser = await this.usersRepository.save(user);
 
-      await this.usersRepository.save(
-        new User({
-          name: 'John Doe',
-          email: 'john.doe@gmail.com',
-        }),
-      );
+    //   await this.usersRepository.save(
+    //     new User('John Doe', 'john.doe@gmail.com'),
+    //   );
 
-      throw new Error('Proposital error to force rollback');
-      return savedUser;
-    });
-    throw new Error(`Cannot save User ${user.name}`);
+    //   throw new Error('Proposital error to force rollback');
+    //   return savedUser;
+    // });
+    // throw new Error(`Cannot save User ${user.name}`);
+    return await this.usersRepository.save(user);
   }
 
   async update(user: User): Promise<boolean> {
