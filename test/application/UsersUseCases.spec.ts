@@ -6,7 +6,7 @@ import { IUsersRepository } from 'application/ports/IUsersRepository';
 import { UsersUseCases } from 'application/use-cases/UsersUseCases';
 import { User } from 'domain/models/User';
 
-describe('User UseCases Test', () => {
+describe('UsersUseCases Test', () => {
   let usersRepository: IUsersRepository;
   let usersUseCases: UsersUseCases;
 
@@ -41,62 +41,64 @@ describe('User UseCases Test', () => {
     usersUseCases = module.get<UsersUseCases>(UsersUseCases);
   });
 
-  it('Shoud create an user', async () => {
+  it('should create a user when a valid user is passed in createUser', async () => {
     jest
       .spyOn(usersRepository, 'save')
       .mockImplementation(async () => USER_OBJECT);
-    const user = await usersUseCases.save(USER_OBJECT);
+
+    const user = await usersUseCases.createUser(USER_OBJECT);
 
     expect(user instanceof User);
     expect(user).toBe(USER_OBJECT);
   });
 
-  it('Shoud get an user by its Id', async () => {
+  it('shoud get a user when a valid id is passed in getUserById', async () => {
     jest
       .spyOn(usersRepository, 'findOne')
       .mockImplementation(async () => USER_OBJECT);
-    const user = await usersUseCases.getById(1);
+
+    const user = await usersUseCases.getUserById(1);
 
     expect(user instanceof User);
     expect(user).toBe(USER_OBJECT);
   });
 
-  it('Shoud throw an error if user is not found', async () => {
+  it('shoud throw NotFoundException when the user is not found in getUserById', async () => {
     try {
       jest
         .spyOn(usersRepository, 'findOne')
         .mockImplementation(async () => null);
-      await usersUseCases.getById(2);
+      await usersUseCases.getUserById(2);
     } catch (err) {
       expect(err instanceof NotFoundException).toBeTruthy();
       expect(err.message).toBe('The user {2} has not found.');
     }
   });
 
-  it('Shoud get all users', async () => {
+  it('shoud get all users in getUsers', async () => {
     jest
       .spyOn(usersRepository, 'find')
       .mockImplementation(async () => [USER_OBJECT]);
-    const users = await usersUseCases.get();
+    const users = await usersUseCases.getUsers();
 
     expect(users).toHaveLength(1);
     expect(users).toStrictEqual([USER_OBJECT]);
   });
 
-  it('Shoud update a user', async () => {
+  it('shoud return true when user is updated in updateUser', async () => {
     jest
       .spyOn(usersRepository, 'update')
       .mockImplementation(async () => ({ affected: 1 } as UpdateResult));
-    const updated = await usersUseCases.update(USER);
+    const updated = await usersUseCases.updateUser(USER);
 
     expect(updated).toBeTruthy();
   });
 
-  it('Shoud delete a user', async () => {
+  it('shoud return true when user is deleted in deleteUser', async () => {
     jest
       .spyOn(usersRepository, 'delete')
       .mockImplementation(async () => ({ affected: 1 } as DeleteResult));
-    const deleted = await usersUseCases.delete(1);
+    const deleted = await usersUseCases.deleteUser(1);
 
     expect(deleted).toBeTruthy();
   });

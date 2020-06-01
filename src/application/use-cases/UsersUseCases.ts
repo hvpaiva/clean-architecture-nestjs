@@ -9,13 +9,13 @@ export class UsersUseCases {
 
   constructor(private readonly usersRepository: IUsersRepository) {}
 
-  async get(): Promise<User[]> {
+  async getUsers(): Promise<User[]> {
     this.logger.log('Find all users');
 
     return await this.usersRepository.find({ loadEagerRelations: true });
   }
 
-  async getById(id: number): Promise<User> {
+  async getUserById(id: number): Promise<User> {
     this.logger.log(`Find the user: ${id}`);
 
     const user = await this.usersRepository.findOne(id);
@@ -24,19 +24,19 @@ export class UsersUseCases {
     return user;
   }
 
-  async save(user: User): Promise<User> {
+  async createUser(user: User): Promise<User> {
     this.logger.log(`Saving a user`);
     return await this.usersRepository.save(user);
   }
 
-  async update(user: User): Promise<boolean> {
+  async updateUser(user: User): Promise<boolean> {
     this.logger.log(`Updating a user: ${user.id}`);
     const result = await this.usersRepository.update({ id: user.id }, user);
 
     return result.affected > 0;
   }
 
-  async delete(id: number): Promise<boolean> {
+  async deleteUser(id: number): Promise<boolean> {
     this.logger.log(`Deleting a user: ${id}`);
     const result = await this.usersRepository.delete({ id });
 
