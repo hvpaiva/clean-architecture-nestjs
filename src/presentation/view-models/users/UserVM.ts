@@ -36,8 +36,4 @@ export class UserVM {
   static toViewModel(user: User): UserVM {
     return plainToClass(UserVM, user, { excludeExtraneousValues: true });
   }
-
-  static fromViewModel(vm: UserVM): User {
-    return plainToClass(User, vm, { excludeExtraneousValues: true });
-  }
 }

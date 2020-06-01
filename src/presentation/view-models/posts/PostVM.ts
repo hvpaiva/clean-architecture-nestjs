@@ -36,8 +36,4 @@ export class PostVM {
   static toViewModel(user: Post): PostVM {
     return plainToClass(PostVM, user, { excludeExtraneousValues: true });
   }
-
-  static fromViewModel(vm: PostVM): Post {
-    return plainToClass(Post, vm, { excludeExtraneousValues: true });
-  }
 }

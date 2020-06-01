@@ -37,7 +37,7 @@ export class UsersController {
     type: NotFoundError,
   })
   async get(@Param('id') id: string): Promise<UserVM> {
-    const user = await this.usersUseCases.getById(parseInt(id, 10));
+    const user = await this.usersUseCases.getUserById(parseInt(id, 10));
 
     return UserVM.toViewModel(user);
   }
@@ -48,7 +48,7 @@ export class UsersController {
   })
   @ApiOkResponse({ description: 'All user`s fetched.', type: [UserVM] })
   async getAll(): Promise<UserVM[]> {
-    const users = await this.usersUseCases.get();
+    const users = await this.usersUseCases.getUsers();
 
     return users.map(user => UserVM.toViewModel(user));
   }
@@ -67,7 +67,7 @@ export class UsersController {
     type: UnprocessableEntityError,
   })
   async createUser(@Body() createUser: CreateUserVM): Promise<UserVM> {
-    const newUser = await this.usersUseCases.save(
+    const newUser = await this.usersUseCases.createUser(
       CreateUserVM.fromViewModel(createUser),
     );
 
