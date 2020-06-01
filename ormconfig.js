@@ -21,7 +21,7 @@ module.exports = {
   logging: true,
   logger: 'file',
 
-  migrationsRun: false, // I prefer to run manually
+  migrationsRun: environment === 'test', // I prefer to run manually in dev
   migrationsTableName: 'migrations',
   migrations: ['dist/infrastructure/database/migrations/*.js'],
   cli: {
