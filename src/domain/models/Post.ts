@@ -1,6 +1,7 @@
 import { User } from 'domain/models/User';
+import { IEntity } from 'domain/shared/IEntity';
 
-export class Post {
+export class Post implements IEntity {
   id?: number;
 
   title: string;
@@ -18,5 +19,11 @@ export class Post {
     this.text = text;
     this.user = user;
     this.id = id;
+  }
+
+  equals(entity: IEntity): boolean {
+    if (!(entity instanceof Post)) return false;
+
+    return this.id === entity.id;
   }
 }

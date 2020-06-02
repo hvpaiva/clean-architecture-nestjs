@@ -1,7 +1,8 @@
 import { Post } from './Post';
 import { DomainException } from 'domain/exceptions/DomainException';
+import { IEntity } from 'domain/shared/IEntity';
 
-export class User {
+export class User implements IEntity {
   id?: number;
 
   name: string;
@@ -36,5 +37,11 @@ export class User {
       throw new DomainException('Post with the same name already exists');
 
     this.posts.push(post);
+  }
+
+  equals(entity: IEntity) {
+    if (!(entity instanceof User)) return false;
+
+    return this.id === entity.id;
   }
 }
