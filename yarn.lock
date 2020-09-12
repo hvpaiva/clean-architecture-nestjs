@@ -953,11 +953,6 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@usemobile_br/usekit@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@usemobile_br/usekit/-/usekit-1.1.0.tgz#dd30c31c2a94f5c6f6b976375dce24ae3e5dc1fd"
-  integrity sha512-xvOflk51TJpY/cVODiwMVSmZuCE5NMedMXVFm165B0PHiMOIn8z2ANt0DBWODsINACn1xfk42rz3mj1lFWtfqA==
-
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -5053,9 +5048,9 @@ node-emoji@1.10.0:
     lodash.toarray "^4.4.0"
 
 node-fetch@^2.3.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
-  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-int64@^0.4.0:
   version "0.4.0"
