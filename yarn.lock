@@ -953,11 +953,6 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@usemobile_br/usekit@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@usemobile_br/usekit/-/usekit-1.1.0.tgz#dd30c31c2a94f5c6f6b976375dce24ae3e5dc1fd"
-  integrity sha512-xvOflk51TJpY/cVODiwMVSmZuCE5NMedMXVFm165B0PHiMOIn8z2ANt0DBWODsINACn1xfk42rz3mj1lFWtfqA==
-
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -3577,9 +3572,9 @@ hide-powered-by@1.1.0:
   integrity sha512-Io1zA2yOA1YJslkr+AJlWSf2yWFkKjvkcL9Ni1XSUqnGLr/qRQe2UI3Cn/J9MsJht7yEVCe0SscY1HgVMujbgg==
 
 highlight.js@^9.6.0:
-  version "9.18.1"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.1.tgz#ed21aa001fe6252bb10a3d76d47573c6539fe13c"
-  integrity sha512-OrVKYz70LHsnCgmbXctv/bfuvntIKDz177h0Co37DQ5jamGZLVmoCVMtjMtNZY3X9DrCcKfklHPNeA0uPZhSJg==
+  version "9.18.5"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.5.tgz#d18a359867f378c138d6819edfc2a8acd5f29825"
+  integrity sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
