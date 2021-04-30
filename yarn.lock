@@ -953,11 +953,6 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@usemobile_br/usekit@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@usemobile_br/usekit/-/usekit-1.1.0.tgz#dd30c31c2a94f5c6f6b976375dce24ae3e5dc1fd"
-  integrity sha512-xvOflk51TJpY/cVODiwMVSmZuCE5NMedMXVFm165B0PHiMOIn8z2ANt0DBWODsINACn1xfk42rz3mj1lFWtfqA==
-
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -6480,9 +6475,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
