@@ -67,7 +67,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-import-helpers": "^1.0.2",
     "jest": "^25.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "prettier": "^1.19.1",
     "start-server-webpack-plugin": "^2.2.5",
     "supertest": "^4.0.2",
