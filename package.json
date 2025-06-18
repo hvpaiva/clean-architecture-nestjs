@@ -32,7 +32,7 @@
     "@nestjs/swagger": "^4.5.8",
     "@nestjs/terminus": "^7.0.1",
     "@nestjs/typeorm": "^7.1.0",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.3",
     "cache-manager": "^3.3.0",
     "chalk": "^4.0.0",
     "class-transformer": "^0.3.1",
